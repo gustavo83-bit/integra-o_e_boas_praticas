@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meu nome e gustavo e eu sou um desenvolvedor</title>
+
+    <!-- Ícones Google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+
+    <!-- ESTILOS -->
+    <style>
+        :root {
+            /* Tema Claro */
+            --bg-body: #ffffff;
+            --bg-card: #f3f3f3;
+            --text-body: #000000;
+            --primary: #7d1ad4;
+            --primary-hover: #8800ff;
+        }
+
+        [data-theme="dark"] {
+            /* Tema Escuro */
+            --bg-body: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --text-body: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-body);
+            transition: 0.3s;
+        }
+
+        header {
+            padding: 1rem 2rem;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        /* Menu e itens */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: bold;
+        }
+
+        /* Menu Mobile */
+        #burger {
+            font-size: 32px;
+            cursor: pointer;
+            display: block;
+        }
+
+        nav {
+            display: none;
+            flex-direction: column;
+            padding: 1rem;
+            background: var(--bg-card);
+        }
+
+        nav.open {
+            display: flex;
+        }
+
+        /* Seções */
+        section {
+            padding: 4rem 2rem;
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 0.8rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Botão modo escuro */
+        #btn-dark {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #btn-dark:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Desktop */
+        @media (min-width: 768px) {
+            nav {
+                display: flex !important;
+                flex-direction: row;
+                background: transparent;
+            }
+            #burger {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>gustavo- Desenvolvedor </h2>
+    
+    
+    
+    <span id="burger" class="material-symbols-outlined">menu</span>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="#sobre">meu nome e gustavo e eu estou fazendo o curso de web designi</a></li>
+            <li><a href="#projetos">lampada,clean_code,ux-ui.html. e entre outros</a></li>
+            <li><a href="#contato">rodrigues25gustavo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Botão tema -->
+<div style="text-align: center; padding: 1rem;">
+    <button id="btn-dark">Alternar tema</button>
+</div>
+
+<section id="sobre">
+    <h1>meu nome e gustavo e eu estou fazendo o curso do webb designi e eu  tenho um sonho q e poder audar minha familia financeiramente </h1>
+    <div class="card">
+        <p>Olá! Sou desenvolvedor iniciante e este é meu portfólio mobile-first com modo escuro.</p>
+    </div>
+</section>
+
+<section id="projetos">
+    <h1>Projetos,lampada,clen_code,ux_ui, e entre outros</h1>
+    <div class="card">
+        
+    </div>
+</section>
+
+<section id="contato">
+    <h1>gustavo</h1>
+    <div class="card">
+        <p>rodrigues25gustavo</p>
+    </div>
+</section>
+
+<footer style="text-align: center; padding: 2rem; opacity: 0.7;">
+    <p>©gustavo rodrigues — Portfólio 2025</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+    /* MENU MOBILE */
+    const burger = document.getElementById("burger");
+    const menu = document.getElementById("menu");
+
+    burger.addEventListener("click", () => {
+        menu.classList.toggle("open");
+    });
+
+
+    /* TEMA ESCURO */
+    const btnDark = document.getElementById("btn-dark");
+
+    const temaAtual = localStorage.getItem("temaSite") || "light";
+    aplicarTema(temaAtual);
+
+    btnDark.addEventListener("click", () => {
+        const novoTema = document.documentElement.getAttribute("data-theme") === "dark" 
+            ? "light" 
+            : "dark";
+
+        aplicarTema(novoTema);
+        localStorage.setItem("temaSite", novoTema);
+    });
+
+    function aplicarTema(tema) {
+        document.documentElement.setAttribute("data-theme", tema);
+    }
+</script>
+
+</body>
+</html>
